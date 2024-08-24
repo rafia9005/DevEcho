@@ -1,13 +1,16 @@
 {
+  "include": [
+    "src/**/*"
+  ],
   "compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "target": "es2016",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
 }
+
