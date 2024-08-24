@@ -1,3 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 
-export const DatabaseClient = new PrismaClient();
+export class DBClient extends PrismaClient {
+  constructor() {
+    super();
+    this.$connect();
+  }
+}

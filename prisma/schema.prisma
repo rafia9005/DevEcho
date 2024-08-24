@@ -10,13 +10,22 @@ datasource db {
 model User {
   id         Int      @id @default(autoincrement())
   name       String   @db.VarChar(255)
-  email      String   @db.VarChar(255)
+  email      String   @unique @db.VarChar(255)
   password   String
-  token      String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+  token      token[]
 
   @@map("users")
+}
+
+model token {
+  id          Int    @id @default(autoincrement())
+  accessToken String
+  user        User   @relation(fields: [users], references: [id])
+  users       Int
+
+  @@map("token")
 }
 
 model Blog {
