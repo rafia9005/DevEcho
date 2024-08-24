@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, MouseEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -14,13 +14,13 @@ export default function NavbarLayout() {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside as EventListener);
+    return () => document.removeEventListener("mousedown", handleClickOutside as EventListener);
   }, []);
 
   return (
     <nav
-      className="fixed w-full backdrop-blur-lg bg-white transition-colors duration-300"
+      className="fixed w-full backdrop-blur-lg bg-nord0 transition-colors duration-300"
       style={{ zIndex: "2" }}
     >
       <div className="mx-auto max-w-screen-xl px-4 py-4">
@@ -29,7 +29,7 @@ export default function NavbarLayout() {
             animate={{ y: 0 }}
             initial={{ y: -100 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold"
+            className="text-3xl font-bold text-nord4"
           >
             <Link to="/">DevEcho</Link>
           </motion.div>
@@ -41,7 +41,7 @@ export default function NavbarLayout() {
                 initial={{ y: -100 }}
                 transition={{ duration: 0.5 + index * 0.1 }}
                 href={`#${item.toLowerCase()}`}
-                className="hover:bg-gray-200 px-4 py-2 rounded-md transition-colors duration-200"
+                className="hover:bg-nord1 px-4 py-2 rounded-md text-nord4 transition-colors duration-200"
               >
                 {item}
               </motion.a>
@@ -50,15 +50,15 @@ export default function NavbarLayout() {
           <div className="flex items-center gap-4">
             <Link
               to="/github"
-              className="hidden md:flex items-center px-4 py-2 rounded-md border-2 border-gray-300 text-gray-800 hover:bg-gray-200 transition-colors duration-200"
+              className="hidden md:flex items-center px-4 py-2 rounded-md border-2 border-nord3 text-nord6 hover:bg-nord2 transition-colors duration-200"
             >
               Login
             </Link>
             <button onClick={() => setToggleMenu(!toggleMenu)} className="lg:hidden p-2 rounded-md">
               {toggleMenu ? (
-                <XMarkIcon className="h-6 text-gray-800" />
+                <XMarkIcon className="h-6 text-nord6" />
               ) : (
-                <Bars3Icon className="h-6 text-gray-800" />
+                <Bars3Icon className="h-6 text-nord6" />
               )}
             </button>
           </div>
@@ -66,7 +66,7 @@ export default function NavbarLayout() {
       </div>
       <motion.div
         ref={menuRef}
-        className={`fixed top-0 right-0 z-40 w-full bg-gray-800 text-white lg:hidden transition-transform duration-300 ${toggleMenu ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed top-0 right-0 z-40 w-full bg-nord1 text-nord4 lg:hidden transition-transform duration-300 ${toggleMenu ? 'translate-x-0' : '-translate-x-full'}`}
         initial={{ x: '100%' }}
         animate={{ x: toggleMenu ? 0 : '100%' }}
       >
@@ -75,7 +75,7 @@ export default function NavbarLayout() {
             <Link
               key={index}
               to={`/#${item.toLowerCase()}`}
-              className="py-2 text-lg font-semibold hover:bg-gray-700 rounded-md w-full text-center"
+              className="py-2 text-lg font-semibold hover:bg-nord2 rounded-md w-full text-center"
               onClick={() => setToggleMenu(false)}
             >
               {item}
