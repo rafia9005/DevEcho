@@ -1,8 +1,10 @@
-import React from 'react'
+import NavbarLayout from "../components/layouts/NavbarLayout"
 
 export default function Index() {
   return (
-    <div>Index</div>
+    <>
+      <NavbarLayout />
+    </>
   )
 }
 
