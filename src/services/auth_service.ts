@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export class AuthService {
   private db: DBClient;
-  private jwtSecret: string = process.env.SECRET_KEY;
+  private jwtSecret: any = process.env.SECRET_KEY;
 
   constructor() {
     this.db = new DBClient();
@@ -25,9 +25,12 @@ export class AuthService {
     await this.db.token.create({
       data: {
         accessToken: token,
-        user: user.id,
+        user: { connect: { id: user.id } },
       },
     });
+    return {
+      token,
+    };
   }
   async Register(name: string, email: string, password: string) {
     const existingUser = await this.db.user.findUnique({
