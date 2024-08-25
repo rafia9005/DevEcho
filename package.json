@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch src --exec ts-node src/index.ts",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix"
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.ts"
+    }
+  ],
+  "env": {
+    "SECRET_KEY": "@secret_key",
+    "DATABASE_URL": "@database_url"
+  }
+}
+
