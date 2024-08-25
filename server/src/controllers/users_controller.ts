@@ -23,7 +23,6 @@ export class UsersController {
         console.error("Error fetching user profile:", error.message);
         return res.status(500).json({ message: "Internal server error" });
       } else {
-        // Handle unexpected error types
         console.error("Unexpected error fetching user profile:", error);
         return res.status(500).json({ message: "Internal server error" });
       }

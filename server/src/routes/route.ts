@@ -11,10 +11,6 @@ const r = Router();
 r.post("/auth/register", registerValidate, validate, AuthController.Register);
 r.post("/auth/login", loginValidate, validate, AuthController.Login);
 
-r.get("/protected-route", authenticate, (req, res) => {
-  res.json({ message: "You have access to this route" });
-});
-
 r.get("/profile", authenticate, UsersController.getProfile);
 
 export default r;
