@@ -4,6 +4,7 @@ import { loginValidate, registerValidate } from "../validate/validate";
 import { validate } from "../middleware/validators";
 import { authenticate } from "../middleware/auth";
 import { UsersController } from "../controllers/users_controller";
+import { BlogController } from "../controllers/blog_controller";
 
 const r = Router();
 
@@ -12,5 +13,6 @@ r.post("/auth/register", registerValidate, validate, AuthController.Register);
 r.post("/auth/login", loginValidate, validate, AuthController.Login);
 
 r.get("/profile", authenticate, UsersController.getProfile);
+r.get("/example", BlogController.get);
 
 export default r;

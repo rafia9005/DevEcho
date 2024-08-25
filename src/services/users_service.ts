@@ -1,11 +1,7 @@
 import { DBClient } from "../database/Client";
 
 export class UsersService {
-  private db: DBClient;
-
-  constructor() {
-    this.db = new DBClient();
-  }
+  private db = new DBClient();
 
   async getUserProfile(userId: number) {
     try {
